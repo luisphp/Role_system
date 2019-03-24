@@ -14,7 +14,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        
+        $products = Product::paginate();
+
+        return view ('products.index', compact('products'));
     }
 
     /**
@@ -24,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return iew ('products.create');
     }
 
     /**
@@ -35,7 +38,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $products = Product::create($request->all());
+        
+
+        return redirect()->route('products.edit', $products->id)-with('info', 'Producto creado exitosamente!');
     }
 
     /**
@@ -46,7 +52,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view ('products.show',compact('product'));
     }
 
     /**
@@ -57,7 +63,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view ('products.edit',compact('product'));
     }
 
     /**
@@ -69,7 +75,10 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        
+        $product->update($request->all());
+
+        return redirect()->route('products.edit', $products->id)-with('info', 'Producto editado exitosamente!');
     }
 
     /**
@@ -80,6 +89,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+     $product->delete();
+
+     return back()-with('info', 'Producto editado exitosamente!');
+
     }
 }
