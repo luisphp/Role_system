@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+
+            <div class="col-md-offset-2">
                 <div class="card">
-                    <h2 class="card-title">Actualizar Producto </h2>
+                    <div class="card-title"> <h2> Producto </h2></div>
 
                     <div class="card-body">
                         @if (session('info'))
@@ -14,14 +14,16 @@
                             </div>
                         @endif
 
-                        {!! Form::model($product, ['route' => ['products.update', $product->id],'method' => 'PUT']) !!}
+                        <p> <strong>Producto: </strong> {{$product->name}} </p>
 
-                        @include('products.partial.form')
+                        <hr>
+                        
+                        <p> <strong>Descripcion: </strong> {{$product->description}} </p>
 
-                        {!! Form::close() !!}
+
                     </div>
                 </div>
             </div>
-        </div>
+
     </div>
 @endsection

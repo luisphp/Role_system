@@ -6,23 +6,22 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
-                <div class="card-heading"> 
+                <div class="card-title"> 
 
-                	<h2>  Productos </h2> 
-
-                	<span class="float-right">
-
-                		<a href="{{route('products.create')}}" class="btn-primary btn-sm float-right">Crear</a> 
-
-                	</span>
+                	<h2> Productos <span class="pull-right"> <a role="button" class="btn btn-primary float-right" href="{{ route('products.create') }}"> Crear </a> </span> </h2>
 
                 	</div>
 
                 <div class="card-body">
-                    @if (session('status'))
+
+                    @if (session('info'))
+
                         <div class="alert alert-success">
-                            {{ session('status') }}
+
+                            {{ session('info') }}
+
                         </div>
+
                     @endif
 
                     
@@ -57,7 +56,7 @@
 						      <td>
 						      @can('products.destroy')
 
-						      {!! Form::open(['route' =>['products.destroy',$product->id], 'method' => 'DELETE']) !!}
+						      {!! Form::open(['route' =>['products.destroy', $product->id], 'method' => 'DELETE']) !!}
 
 						      	<button class="btn btn-danger btn-sm">Eliminar</button>
 
@@ -74,7 +73,11 @@
 						  </tbody>
 					</table>
 
-					{{$products->render()}}
+					<div class="float-right">
+
+						{{$products->render()}}
+
+					</div>
 
                 </div>
             </div>
