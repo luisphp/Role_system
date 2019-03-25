@@ -60,14 +60,19 @@ Route::middleware(['auth'])->group(function(){
 
 
 	//Usuarios
-	Route::get('users', 'UsersController@index')->name('users.index')->middleware('permission:users.index');
 
-	Route::put('users/{user}', 'UsersController@update')->name('users.update')->middleware('permission:users.edit');
+	Route::post('users/store', 'UserController@store')->name('users.store')->middleware('permission:users.create');
 
-	Route::get('users/{user}', 'UsersController@show')->name('users.show')->middleware('permission:users.show');
+	Route::post('users/store', 'UserController@create')->name('users.create')->middleware('permission:users.create');
+	
+	Route::get('users', 'UserController@index')->name('users.index')->middleware('permission:users.index');
 
-	Route::delete('users/{store}', 'UsersController@destroy')->name('users.destroy')->middleware('permission:users.destroy');
+	Route::put('users/{user}', 'UserController@update')->name('users.update')->middleware('permission:users.edit');
 
-	Route::get('users/{user}/edit', 'UsersController@edit')->name('users.edit')->middleware('permission:users.edit');
+	Route::get('users/{user}', 'UserController@show')->name('users.show')->middleware('permission:users.show');
+
+	Route::delete('users/{store}', 'UserController@destroy')->name('users.destroy')->middleware('permission:users.destroy');
+
+	Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')->middleware('permission:users.edit');
 
 });

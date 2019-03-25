@@ -1,20 +1,21 @@
+
 @extends('layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="card">
-                <div class="card-title">Dashboard</div>
+            <div class="panel">
+                <div class="panel-title">Dashboard</div>
 
-                <div class="card-body">
+                <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
-                            {{ session('status') }}
+                            {{ session('info') }}
                         </div>
                     @endif
 
-                    You are logged in!
+                    Iniciaste sesion!
                 </div>
             </div>
         </div>
